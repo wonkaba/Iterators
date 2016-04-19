@@ -1,0 +1,66 @@
+/*Written By Archie Archbold
+ * Basic unfinished Array Wrapper class example to show iterator use*/
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class ArrayTest<E> implements Iterable<E>{
+
+	@SuppressWarnings("unchecked")
+	E[] h = (E[])new Object[10];
+	int size=0;
+	
+	public void add(E x){
+		h[size]=x;
+		size++;
+	}
+	
+	public E get(int index){
+		return h[index];
+	}
+	
+	public int size(){
+		return size;
+	}
+
+	@Override
+	public Iterator<E> iterator() {
+		
+		return new IteratorHelper();
+	}
+	
+	public void printAll(){
+		Iterator it=new IteratorHelper();
+		while(it.hasNext()){
+			System.out.println(it.next());
+		}
+	}
+	
+	
+
+
+	class IteratorHelper implements Iterator<E>{
+		int index=0;
+		
+		@Override
+		public boolean hasNext() {
+//			if(index<size){
+//				return true;
+//			}
+//			return false;
+			
+			return (index<size);
+		}
+
+		@Override
+		public E next() {
+			if(!hasNext()){
+				throw new NoSuchElementException();
+			}
+			return h[index++];
+		}
+
+	
+	}
+
+}
