@@ -1,0 +1,25 @@
+/*Written By Archie Archbold
+ * Tester to use with LinkedListThing.java*/
+
+public class LinkedListThingIteratorTester {
+	LinkedListThing<String> list;
+	public IteratorTester(){
+		list = new LinkedListThing<>();
+		list.add("This");
+		list.add("is");
+		list.add("how");
+		list.add("an");
+		list.add("iterator");
+		list.add("works");
+		
+		for(String s:list){
+			System.out.println(s + " ");
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+			new IteratorTester();
+	}
+
+}
