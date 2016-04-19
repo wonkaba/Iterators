@@ -1,0 +1,67 @@
+/*Written By Archie Archbold
+ * Basic unfinished Linked List example to show iterator use*/
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class LinkedListThing<E> implements Iterable<E>{
+
+	private int currentSize;
+	private Node<E> head,tail;
+	public LinkedListThing(){
+		head = tail = null;
+		currentSize = 0;
+	}
+	
+	private class Node<E>{
+		E data;
+		Node<E> next;
+		public Node(E obj){
+			data = obj;
+			next = null;
+		}
+	}
+	
+	public boolean add(E obj){
+		Node<E> node = new Node<E>(obj);
+		if(head==null){
+			head=tail=node;
+		}
+		else{
+			tail.next=node;
+			tail=node;
+		}
+		currentSize++;
+		return true;
+	}
+
+	@Override
+	public Iterator<E> iterator() {
+		return new IteratorThingy();
+	}
+	
+	private class IteratorThingy implements Iterator<E>{
+		private Node<E> current;
+		private int count;
+		private IteratorThingy(){
+			current=head;
+			count=1;
+		}
+		@Override
+		public boolean hasNext() {
+			return count<=currentSize;
+		}
+		@Override
+		public E next() {
+			if(!hasNext()){
+				throw new NoSuchElementException();
+			}
+			E temp = current.data;
+			current = current.next;
+			count++;
+			return temp;
+		}
+		
+	}
+	
+}
