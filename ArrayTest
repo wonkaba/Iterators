@@ -29,6 +29,7 @@ public class ArrayTest<E> implements Iterable<E>{
 		return new IteratorHelper();
 	}
 	
+	// demonstrates how to use the iterator to print
 	public void printAll(){
 		Iterator it=iterator()
 		while(it.hasNext()){
@@ -48,7 +49,8 @@ public class ArrayTest<E> implements Iterable<E>{
 //				return true;
 //			}
 //			return false;
-			
+
+			//this code below does the same as above but with one line of code
 			return (index<size);
 		}
 
