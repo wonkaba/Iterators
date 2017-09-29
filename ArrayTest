@@ -30,7 +30,7 @@ public class ArrayTest<E> implements Iterable<E>{
 	}
 	
 	public void printAll(){
-		Iterator it=new IteratorHelper();
+		Iterator it=iterator()
 		while(it.hasNext()){
 			System.out.println(it.next());
 		}
